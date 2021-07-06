@@ -1,11 +1,11 @@
 class Warrior
     attr_reader :name
 
-    def initialize(name, attackDamage, hitpoints, deflactChance = 0)
+    def initialize(name, attackDamage, hitpoints, deflectChance = 0)
         @name = name
         @hitpoints = hitpoints
         @attackDmg = attackDamage
-        @deflactChance = deflactChance
+        @deflectChance = deflectChance
     end
 
     def to_s
@@ -32,7 +32,11 @@ class Warrior
     end
 
     def isDeflect?
-        randomNumber = rand(@deflactChance * 10).to_int
-        randomNumber.nonzero?
+        return true if @deflectChance == 1
+        return false if @deflectChance == 0
+
+        hittedChanceRatioNumber = 100 / (100 - @deflectChance*100)
+        randomNumber = rand(hittedChanceRatioNumber) + 1
+        randomNumber == hittedChanceRatioNumber
     end
 end
