@@ -7,11 +7,11 @@ puts khotun
 
 while true
     jin.attack(khotun)
-    break unless khotun.isAlive? 
+    break unless khotun.is_alive? 
 
     khotun.attack(jin)
-    break unless jin.isAlive?
+    break unless jin.is_alive?
 end
 
-puts "#{jin.name} is dead" unless jin.isAlive? 
-puts "#{khotun.name} is dead" unless khotun.isAlive? 
+puts "#{jin.name} is dead" unless jin.is_alive? 
+puts "#{khotun.name} is dead" unless khotun.is_alive? 

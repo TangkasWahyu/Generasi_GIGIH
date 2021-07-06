@@ -9,21 +9,21 @@ class Warrior
     end
 
     def to_s
-        "#{@name} has #{@hitpoints} hitpoint and #{@attack_damage} attack damage \n\n"
+        "#{@name} has #{@hitpoints} hitpoints and #{@attack_damage} attack damage \n\n"
     end
 
-    def isAlive?
+    def is_alive?
         @hitpoints > 0
     end
 
-    def attack(other)
-        puts "#{@name} attacks #{other.name} with #{@attack_damage}"
-        other.attacked(@attack_damage)
-        puts other
+    def attack(other_warrior)
+        puts "#{@name} attacks #{other_warrior.name} with #{@attack_damage}"
+        other_warrior.attacked(@attack_damage)
+        puts other_warrior
     end
 
     def attacked(attack_damage)
-        if isDeflect?
+        if is_deflect?
             attack_damage = 0
             puts "#{@name} deflect the attack"
         end
@@ -31,7 +31,7 @@ class Warrior
         @hitpoints -= attack_damage
     end
 
-    def isDeflect?
+    def is_deflect?
         return true if @deflect_chance == 1
         return false if @deflect_chance == 0
 
