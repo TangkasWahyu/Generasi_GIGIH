@@ -1,10 +1,10 @@
 class Warrior
-    attr_reader :name, :attackDmg
+    attr_reader :name
 
-    def initialize(name, attackDmg, hitpoints)
+    def initialize(name, attackDamage, hitpoints)
         @name = name
         @hitpoints = hitpoints
-        @attackDmg = attackDmg
+        @attackDmg = attackDamage
     end
 
     def to_s
@@ -13,21 +13,15 @@ class Warrior
 
     def attack(other)
         puts "#{@name} attacks #{other.name} with #{@attackDmg}"
-        attackedBy(other)
+        other.attacked(@attackDmg)
+        puts other
     end
 
-    def attackedBy(other)
-        @hitpoints -= other.attackDmg
-        puts other
+    def attacked(attackDamage)
+        @hitpoints -= attackDamage
     end
 
     def isAlive?
         @hitpoints > 0
-    end
-
-    def isDead?
-        if !isAlive?
-            puts "#{@name} is dead"
-        end 
     end
 end

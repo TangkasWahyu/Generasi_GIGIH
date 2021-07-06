@@ -10,5 +10,5 @@ while jin.isAlive? && khotun.isAlive?
     khotun.attack(jin)
 end
 
-jin.isDead?
-khotun.isDead?
+puts "#{jin.name} is dead" unless jin.isAlive? 
+puts "#{khotun.name} is dead" unless khotun.isAlive? 
