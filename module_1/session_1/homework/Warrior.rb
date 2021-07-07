@@ -36,7 +36,7 @@ class Warrior
         return false if @deflect_chance == 0
 
         hitted_chance_ratio_number = 100 / (100 - @deflect_chance*100)
-        random_number = rand(hitted_chance_ratio_number) + 1
-        random_number == hitted_chance_ratio_number
+        random_number = rand(hitted_chance_ratio_number) + 1 )
+        random_number != hitted_chance_ratio_number 
     end
 end
