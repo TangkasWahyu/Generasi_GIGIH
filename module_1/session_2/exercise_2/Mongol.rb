@@ -12,11 +12,11 @@ class Mongol < Warrior
     
     def attacked(attack_damage)
         super(attack_damage)
-        fleeding?
+        fleeing?
     end
 
-    def fleeding?
-        if rand >= 0.5
+    def fleeing?
+        if rand >= 0.1 && @is_alive
             @is_fleed = true
             puts "#{@name} has fled the battlefield with #{@hitpoints} hitpoint left \n\n"
         end
