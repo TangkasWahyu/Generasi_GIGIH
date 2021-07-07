@@ -17,13 +17,9 @@ class Mongol < Warrior
     end
 
     def fleeding?
-        if rand >= 0.1
+        if rand >= 0.5
             @is_fleed = true
-            puts "#{@name} has fled the battlefield with #{@hitpoints} hitpoint left"
+            puts "#{@name} has fled the battlefield with #{@hitpoints} hitpoint left \n\n"
         end
-    end
-    
-    def is_fleed?
-        @is_fleed
     end
 end

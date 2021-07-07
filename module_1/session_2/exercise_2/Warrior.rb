@@ -1,5 +1,5 @@
 class Warrior
-    attr_reader :name
+    attr_reader :name, :is_fleed
 
     def initialize(name, attack_damage, hitpoints)
         @name = name
@@ -18,7 +18,6 @@ class Warrior
     def attack(other_warrior)
         puts "#{@name} attacks #{other_warrior.name} with #{@attack_damage}"
         other_warrior.attacked(@attack_damage)
-        puts "#{other_warrior} \n\n"
     end
 
     def attacked(attack_damage)

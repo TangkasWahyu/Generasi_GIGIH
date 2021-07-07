@@ -9,7 +9,7 @@ class WarriorWithDeflectSkill < Warrior
     def attacked(attack_damage)
         if is_deflect?
             attack_damage = 0
-            puts "#{@name} deflect the attack"
+            puts "#{@name} deflect the attack \n\n"
         end
 
         super(attack_damage)
