@@ -9,8 +9,7 @@ spearman = Spearman.new("Mongol Spearman", 50, 120)
 swordman = Swordman.new("Mongol Swordman", 60, 100)
 
 villains = [archer, spearman, swordman]
-attack_index = 0;
-turn = attack_index + 1
+turn = 1
 
 loop do
     puts "======= Turn #{turn} ======= \n\n"
@@ -22,22 +21,23 @@ loop do
 
     puts "\n"
 
-    villain_index = attack_index % villains.length
-    villain = villains[villain_index]
+    villain = villains.first
 
     jin.attack(villain)
+
     villains.delete(villain) if (not villain.is_alive?) || villain.is_fleed
-    puts "#{villain.name} dies" if not villain.is_alive?
+
+    puts "#{villain.name} dies \n\n" if not villain.is_alive?
     break unless not villains.empty?
 
     villains.each do |villain|
         villain.attack(jin)
         break unless jin.is_alive? 
     end
+    
     break unless jin.is_alive? 
 
-    attack_index += 1
-    turn = attack_index + 1
+    turn += 1
 end
 
 puts "#{jin.name} is dies" unless jin.is_alive? 
