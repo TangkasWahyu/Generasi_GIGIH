@@ -4,6 +4,7 @@ class Mongol < Warrior
     def initialize(name, attack_damage, hitpoints)
         super(name, attack_damage, hitpoints)
         @is_fleed = false
+        @fleed_chance = 0.5
     end
 
     def attack(other_warrior)
@@ -16,7 +17,7 @@ class Mongol < Warrior
     end
 
     def fleeing?
-        if rand >= 0.1 && @is_alive
+        if rand >= @fleed_chance && @is_alive
             @is_fleed = true
             puts "#{@name} has fled the battlefield with #{@hitpoints} hitpoint left \n\n"
         end
