@@ -12,7 +12,7 @@ class WarriorWithDeflectSkill < Warrior
             puts "#{@name} deflect the attack"
         end
 
-        @hitpoints -= attack_damage
+        super(attack_damage)
     end
 
     def is_deflect?
