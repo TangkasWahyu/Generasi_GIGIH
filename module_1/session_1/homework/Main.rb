@@ -5,7 +5,7 @@ khotun = Warrior.new("Khotun Khan", 50, 500)
 puts jin 
 puts khotun
 
-while true
+loop do
     jin.attack(khotun)
     break unless khotun.is_alive? 
 
