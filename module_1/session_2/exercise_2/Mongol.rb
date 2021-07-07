@@ -10,7 +10,6 @@ class Mongol < Warrior
         other_warrior.attacked(@attack_damage)
     end
     
-
     def attacked(attack_damage)
         super(attack_damage)
         fleeding?
