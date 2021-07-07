@@ -16,8 +16,6 @@ class WarriorWithDeflectSkill < Warrior
     end
 
     def is_deflect?
-        deflect_chance_ratio_number = @deflect_chance * 100
-        random_number = rand(100) + 1
-        random_number <= deflect_chance_ratio_number
+        rand <= @deflect_chance
     end
 end
