@@ -32,11 +32,8 @@ class Warrior
     end
 
     def is_deflect?
-        return true if @deflect_chance == 1
-        return false if @deflect_chance == 0
-
-        hitted_chance_ratio_number = 100 / (100 - @deflect_chance*100)
-        random_number = rand(hitted_chance_ratio_number) + 1 )
-        random_number != hitted_chance_ratio_number 
+        deflect_chance_ratio_number = @deflect_chance * 100
+        random_number = rand(100) + 1
+        random_number <= deflect_chance_ratio_number
     end
 end
