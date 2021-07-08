@@ -4,10 +4,10 @@ require_relative 'Swordman'
 require_relative 'Spearman'
 require_relative 'Archer'
 
-jin = WarriorWithDeflectSkillAndHealSkill.new("Jin Sakai", 50, 100, 0.8)
+jin = WarriorWithDeflectSkillAndHealSkill.new("Jin Sakai", 50, 100, 0)
 
 yuna = Warrior.new("Yuna", 45, 90)
-sensei = Warrior.new("Sensi Ishikawa", 60, 80)
+sensei = Warrior.new("Sensei Ishikawa", 60, 80)
 
 archer = Archer.new("Mongol Archer", 40, 80)
 spearman = Spearman.new("Mongol Spearman", 50, 120)
@@ -25,13 +25,11 @@ loop do
     allies.each do | ally |
         puts ally
     end
-
     puts "\n"
 
     villains.each do | villain |
         puts villain
     end
-
     puts "\n"
 
     puts "As #{jin.name}. what do you want to do in this turn?"
@@ -46,11 +44,13 @@ loop do
                 puts "#{index + 1}) #{villain}"
             end
             index_of_villain = gets.chomp.to_i
+
             villain = villains[index_of_villain - 1]
             jin.attack(villain)
-            
-            villains.delete(villain) if (not villain.is_alive?) || villain.is_fleed
+
             puts "#{villain.name} dies \n\n" if not villain.is_alive?
+            villains.delete(villain) if (not villain.is_alive?) || villain.is_fleed
+
             break unless not villains.empty?
         when 2
             puts "Which ally you want to heal?"
@@ -58,6 +58,7 @@ loop do
                 puts "#{index + 1}) #{alley}"
             end
             index_of_ally = gets.chomp.to_i
+
             jin.heal(allies[index_of_ally - 1])
         else
             puts "Please input 1 or 2"
@@ -67,27 +68,32 @@ loop do
     allies.each do |ally|
         villains_index = rand(villains.length)
         villain = villains[villains_index]
+
         ally.attack(villain)
-        
+
+        puts "#{villain.name} dies\n\n" if not villain.is_alive?
         villains.delete(villain) if (not villain.is_alive?) || villain.is_fleed
-        puts "#{villain.name} dies \n\n" if not villain.is_alive?
+
         break unless not villains.empty?
     end
     break unless not villains.empty?
+    puts "\n"
 
     villains.each do |villain|
         jin_team_index = rand(jin_team.length)
         someone_from_jin_team = jin_team[jin_team_index]
+
         villain.attack(someone_from_jin_team)
+
+        puts "#{someone_from_jin_team.name} is dies" unless someone_from_jin_team.is_alive? 
         if (not someone_from_jin_team.is_alive?)
             jin_team.delete(someone_from_jin_team) 
             allies.delete(someone_from_jin_team) 
         end
+        
         break unless jin.is_alive? 
     end
     break unless jin.is_alive? 
 
     turn += 1
 end
-
-puts "#{jin.name} is dies" unless jin.is_alive? 
