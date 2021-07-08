@@ -1,10 +1,10 @@
-require_relative 'WarriorWithDeflectSkill'
+require_relative 'WarriorWithDeflectSkillAndHealSkill'
 require_relative 'Warrior'
 require_relative 'Swordman'
 require_relative 'Spearman'
 require_relative 'Archer'
 
-jin = WarriorWithDeflectSkill.new("Jin Sakai", 50, 100, 0.8)
+jin = WarriorWithDeflectSkillAndHealSkill.new("Jin Sakai", 50, 100, 0.8)
 
 yuna = Warrior.new("Yuna", 45, 90)
 sensei = Warrior.new("Sensi Ishikawa", 60, 80)
@@ -25,6 +25,9 @@ loop do
     allies.each do | ally |
         puts ally
     end
+
+    puts "\n"
+
     villains.each do | villain |
         puts villain
     end
@@ -63,8 +66,8 @@ loop do
 
     allies.each do |ally|
         villains_index = rand(villains.length)
-        someone_from_villains = villains[villains_index]
-        ally.attack(someone_from_villains)
+        villain = villains[villains_index]
+        ally.attack(villain)
         
         villains.delete(villain) if (not villain.is_alive?) || villain.is_fleed
         puts "#{villain.name} dies \n\n" if not villain.is_alive?
