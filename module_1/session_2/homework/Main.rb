@@ -61,6 +61,17 @@ loop do
     end
     break unless not villains.empty?
 
+    allies.each do |ally|
+        villains_index = rand(villains.length)
+        someone_from_villains = villains[villains_index]
+        ally.attack(someone_from_villains)
+        
+        villains.delete(villain) if (not villain.is_alive?) || villain.is_fleed
+        puts "#{villain.name} dies \n\n" if not villain.is_alive?
+        break unless not villains.empty?
+    end
+    break unless not villains.empty?
+
     villains.each do |villain|
         jin_team_index = rand(jin_team.length)
         someone_from_jin_team = jin_team[jin_team_index]
@@ -69,7 +80,6 @@ loop do
             jin_team.delete(someone_from_jin_team) 
             allies.delete(someone_from_jin_team) 
         end
-
         break unless jin.is_alive? 
     end
     break unless jin.is_alive? 
